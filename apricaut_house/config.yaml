@@ -1,0 +1,37 @@
+# Home Assistant add-on manifest for Apricaut House.
+# The option keys are the exact environment variables the binary reads (see run.sh), so the
+# packaging can never drift from the code.
+name: Apricaut House
+slug: apricaut_house
+version: "0.1.0"
+description: Connects your home to Apricaut Games
+url: https://games.apricaut.com
+# A prebuilt image published per architecture by CI (publish-house.yml); the supervisor pulls
+# it and substitutes the machine's arch for {arch}, so the store never compiles the bridge.
+image: ghcr.io/apricaut/apricaut-house-{arch}
+arch:
+  - aarch64
+  - armv7
+startup: application
+boot: auto
+init: false
+# Grants the add-on the supervisor proxy and the injected SUPERVISOR_TOKEN, so it can reach
+# Home Assistant without the owner pasting a long-lived token.
+homeassistant_api: true
+hassio_api: true
+ports:
+  8099/tcp: 8099
+ports_description:
+  8099/tcp: Health check
+options:
+  GAMES_URL: "wss://games.apricaut.com/ws/bridge"
+  BRIDGE_TOKEN: ""
+  HA_URL: "http://supervisor/core"
+  ROLE: bridge
+  HEALTH_PORT: 8099
+schema:
+  GAMES_URL: url
+  BRIDGE_TOKEN: password
+  HA_URL: url
+  ROLE: "list(bridge|display)"
+  HEALTH_PORT: port

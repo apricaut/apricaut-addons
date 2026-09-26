@@ -1,0 +1,5 @@
+# Home Assistant add-on repository manifest. Adding this repository's URL in the Add-on Store
+# lists the Apricaut add-ons (currently Apricaut House) for one-tap install.
+name: Apricaut Add-ons
+url: https://github.com/apricaut/apricaut-addons
+maintainer: Apricaut Platform
