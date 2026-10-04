@@ -3,7 +3,7 @@
 # packaging can never drift from the code.
 name: Apricaut House
 slug: apricaut_house
-version: "0.1.5"
+version: "0.1.6"
 description: Connects your home to Apricaut Games
 url: https://games.apricaut.com
 # A prebuilt image published per architecture by CI (publish-house.yml); the supervisor pulls
